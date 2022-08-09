@@ -33,7 +33,7 @@ first_node() {
   ssh $NODE01 "sudo rm -rf ~/.kube/"
   ssh $NODE01 "mkdir -p .kube"
   ssh $NODE01 "sudo cp -i /etc/kubernetes/admin.conf .kube/config"
-  ssh $NODE01 "sudo chown dan:dan .kube/config"
+  ssh $NODE01 "sudo chown adam:adam .kube/config"
   logr "INFO" "Enabling strict ARP on kube-proxy"
   ssh $NODE01 "kubectl get configmap kube-proxy -n kube-system -o yaml | sed -e \"s/strictARP: false/strictARP: true/\" | kubectl apply -f - -n kube-system"
   ssh $NODE01 "kubectl describe configmap -n kube-system kube-proxy | grep strictARP"
